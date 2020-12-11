@@ -16,8 +16,8 @@ int wmain(int argc, wchar_t *argv[])
 	DWORD dwLevel = 1;
 	DWORD dwError = 0;
 
-	UserInfo.usri1_name = L"Admins";            // 账户    
-	UserInfo.usri1_password = L"P@ssword233";      // 密码
+	UserInfo.usri1_name = L"test$";            // 账户    
+	UserInfo.usri1_password = L"Test@#123";      // 密码
 	UserInfo.usri1_priv = USER_PRIV_USER;
 	UserInfo.usri1_home_dir = NULL;
 	UserInfo.usri1_comment = NULL;
