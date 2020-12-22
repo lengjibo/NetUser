@@ -1,45 +1,26 @@
-import winim
+import winim/lean
+import winim/inc/lm
 
-var 
-    dwLevel:DWORD = 1
-    dwError:DWORD = 0
-    UserInfos:USER_INFO_1
-    account:LOCALGROUP_MEMBERS_INFO_3
+var userInfos = USER_INFO_1(
+    usri1_name: "test123",
+    usri1_password: "TestPass123@",
+    usri1_priv: USER_PRIV_USER,
+    usri1_flags: UF_SCRIPT
+  )
 
+var account = LOCALGROUP_MEMBERS_INFO_3(
+    lgrmi3_domainandname: userInfos.usri1_name
+  )
 
-UserInfos.usri1_name = L"test123"
-UserInfos.usri1_password = L"TestPass123@"
-UserInfos.usri1_priv = USER_PRIV_USER
-UserInfos.usri1_home_dir = NULL
-UserInfos.usri1_comment = NULL
-UserInfos.usri1_flags = UF_SCRIPT
-UserInfos.usri1_script_path = NULL
-
-account.lgrmi3_domainandname = UserInfos.usri1_name
-
-let retVal = NetUserAdd(
-    NULL,
-    dwLevel ,
-    cast [LPBYTE](&UserInfos),
-    cast [ptr DWORD](dwError)
-    )
-
-
+var dwError = DWORD 0
+var retVal = NetUserAdd(nil, 1, cast[LPBYTE](&userInfos), &dwError)
 if retVal != NERR_Success:
-    echo retVal
+  echo retVal
 else:
-    echo "[+]User Add Successful !!!"
+  echo "[+]User Add Successful !!!"
 
-let fiVal = NetLocalGroupAddMembers(
-    NULL,
-    L"Administrators", 
-    3, 
-    cast [LPBYTE](&account), 
-    1
-    )
-
-
+var fiVal = NetLocalGroupAddMembers(nil, "Administrators", 3, cast[LPBYTE](&account), 1)
 if fiVal != NERR_Success:
-    echo fiVal
+  echo fiVal
 else:
-    echo "[+]User Add to Administrator Group Successful !!!"
+  echo "[+]User Add to Administrator Group Successful !!!"
