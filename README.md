@@ -9,7 +9,8 @@
 - NetUser.nim：普通Nim版本
 - rdi_net_user.cpp：反射型dll注入版本
 - bof_net_user.c：CobaltStrike Bof版本
-- SamAdduser.exe：利用sam来添加用户，用户名：Admina 密码：Admin&A*125#
+- SamAdduser.exe：利用sam来添加用户，用户名：Admina 密码：Admin&A*125#（暂时有些问题，回头更改）
+- NoApiUser.exe：利用windows 目录添加用户，C#版本，并移除了用户名密码字符
 
 效果图：
 
